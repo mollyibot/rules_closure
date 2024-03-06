@@ -167,30 +167,18 @@ def collect_js(
     js_module_roots = []
     has_closure_library = False
     for dep in deps:
-        if type(dep) == "Target":
-            srcs += [getattr(dep[ClosureJsLibraryInfo], "srcs", depset())]
-            ijs_files += [getattr(dep[ClosureJsLibraryInfo], "ijs_files", depset())]
-            infos += [getattr(dep[ClosureJsLibraryInfo], "infos", depset())]
-            modules += [getattr(dep[ClosureJsLibraryInfo], "modules", depset())]
-            descriptors += [getattr(dep[ClosureJsLibraryInfo], "descriptors", depset())]
-            stylesheets += [getattr(dep[ClosureJsLibraryInfo], "stylesheets", depset())]
-            js_module_roots += [getattr(dep[ClosureJsLibraryInfo], "js_module_roots", depset())]
-            has_closure_library = (
-                has_closure_library or
-                getattr(dep[ClosureJsLibraryInfo], "has_closure_library", False)
-            )
-        else:
-            srcs += [getattr(dep, "srcs", depset())]
-            ijs_files += [getattr(dep, "ijs_files", depset())]
-            infos += [getattr(dep, "infos", depset())]
-            modules += [getattr(dep, "modules", depset())]
-            descriptors += [getattr(dep, "descriptors", depset())]
-            stylesheets += [getattr(dep, "stylesheets", depset())]
-            js_module_roots += [getattr(dep, "js_module_roots", depset())]
-            has_closure_library = (
-                has_closure_library or
-                getattr(dep, "has_closure_library", False)
-            )
+        dep = dep[ClosureJsLibraryInfo] if type(dep) == "Target" else dep
+        srcs += [getattr(dep, "srcs", depset())]
+        ijs_files += [getattr(dep, "ijs_files", depset())]
+        infos += [getattr(dep, "infos", depset())]
+        modules += [getattr(dep, "modules", depset())]
+        descriptors += [getattr(dep, "descriptors", depset())]
+        stylesheets += [getattr(dep, "stylesheets", depset())]
+        js_module_roots += [getattr(dep, "js_module_roots", depset())]
+        has_closure_library = (
+            has_closure_library or
+            getattr(dep, "has_closure_library", False)
+        )
     if no_closure_library:
         if has_closure_library:
             fail("no_closure_library can't be used when Closure Library is " +

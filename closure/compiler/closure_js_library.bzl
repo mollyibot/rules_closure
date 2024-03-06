@@ -265,7 +265,10 @@ def _closure_js_library_impl(
     info_files = []
     for dep in deps:
         # Polymorphic rules, e.g. closure_css_library, might not provide this.
-        info = getattr(dep[ClosureJsLibraryInfo], "info", None)
+        if type(dep) == "Target":
+            info = getattr(dep[ClosureJsLibraryInfo], "info", None)
+        else:
+            info = getattr(dep, "info", None)
         if info:
             args.add("--dep", info)
             info_files.append(info)

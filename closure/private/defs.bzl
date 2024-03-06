@@ -143,10 +143,11 @@ def unfurl(deps, provider = ""):
                     if not provider or provider in edep:
                         res.append(edep)
         else:
-            res.append(dep)
+            if not provider:
+                res.append(dep)
             if hasattr(dep, "exports"):
                 for edep in dep.exports:
-                    if not ClosureJsLibraryInfo or ClosureJsLibraryInfo in edep:
+                    if not provider or provider in edep:
                         res.append(edep)
     return res
 

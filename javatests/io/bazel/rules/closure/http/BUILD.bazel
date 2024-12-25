@@ -12,9 +12,28 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+load("@rules_java//java:defs.bzl", "java_test")
+
 licenses(["notice"])
 
-load("@rules_java//java:defs.bzl", "java_test")
+java_library(
+    name = "dagger",
+    exported_plugins = [":dagger_plugin"],
+    exports = [
+        "@maven//:com_google_dagger_dagger",
+    ],
+)
+
+java_plugin(
+    name = "dagger_plugin",
+    generates_api = 1,
+    processor_class = "dagger.internal.codegen.ComponentProcessor",
+    deps = [
+        "@maven//:com_google_dagger_dagger",
+        "@maven//:com_google_dagger_dagger_compiler",
+        "@maven//:com_google_dagger_dagger_producers",
+    ],
+)
 
 java_test(
     name = "HttpTestSuite",
@@ -22,12 +41,14 @@ java_test(
     srcs = glob(["*.java"]),
     javacopts = ["-Xep:FutureReturnValueIgnored:OFF"],
     deps = [
+        ":dagger",
         "//java/io/bazel/rules/closure/http",
         "//java/io/bazel/rules/closure/http/filter",
-        "@com_google_dagger_producers",
-        "@com_google_guava",
-        "@com_google_guava_testlib",
-        "@com_google_truth",
-        "@junit",
+        "@maven//:com_google_dagger_dagger",
+        "@maven//:com_google_dagger_dagger_producers",
+        "@maven//:com_google_guava_guava",
+        "@maven//:com_google_guava_guava_testlib",
+        "@maven//:com_google_truth_truth",
+        "@maven//:junit_junit",
     ],
 )

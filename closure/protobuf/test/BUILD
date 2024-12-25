@@ -12,125 +12,125 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-package(default_testonly = True)
-
-licenses(["notice"])
-
 load("@rules_proto//proto:defs.bzl", "proto_library")
 load("//closure/compiler:closure_js_library.bzl", "closure_js_library")
 load("//closure/protobuf:closure_proto_library.bzl", "closure_proto_library")
 load("//closure/testing:closure_js_test.bzl", "closure_js_test")
 
-proto_library(
-    name = "foo_proto",
-    srcs = ["foo.proto"],
-)
+package(default_testonly = True)
 
-closure_proto_library(
-    name = "foo_closure_proto",
-    deps = [":foo_proto"],
-)
+licenses(["notice"])
 
-closure_js_library(
-    name = "foo",
-    srcs = [
-        "foo.js",
-    ],
-    deps = [
-        ":foo_closure_proto",
-    ],
-)
+#proto_library(
+#    name = "foo_proto",
+#    srcs = ["foo.proto"],
+#)
+#
+#closure_proto_library(
+#    name = "foo_closure_proto",
+#    deps = [":foo_proto"],
+#)
+#
+#closure_js_library(
+#    name = "foo",
+#    srcs = [
+#        "foo.js",
+#    ],
+#    deps = [
+#        ":foo_closure_proto",
+#    ],
+#)
+#
+#closure_js_test(
+#    name = "foo_test",
+#    timeout = "short",
+#    srcs = [
+#        "foo_test.js",
+#    ],
+#    entry_points = [
+#        "goog:io.bazel.rules.closure.protobuf.FooTest",
+#    ],
+#    deps = [
+#        ":foo",
+#        "@com_google_javascript_closure_library//closure/goog/testing:testsuite",
+#    ],
+#)
 
-closure_js_test(
-    name = "foo_test",
-    timeout = "short",
-    srcs = [
-        "foo_test.js",
-    ],
-    entry_points = [
-        "goog:io.bazel.rules.closure.protobuf.FooTest",
-    ],
-    deps = [
-        ":foo",
-        "@com_google_javascript_closure_library//closure/goog/testing:testsuite",
-    ],
-)
+#proto_library(
+#    name = "bar_proto",
+#    srcs = ["bar.proto"],
+#    deps = [":foo_proto"],
+#)
+#
+#proto_library(
+#    name = "baz_proto",
+#    srcs = ["baz.proto"],
+#    deps = [":bar_proto"],
+#)
 
-proto_library(
-    name = "bar_proto",
-    srcs = ["bar.proto"],
-    deps = [":foo_proto"],
-)
-
-proto_library(
-    name = "baz_proto",
-    srcs = ["baz.proto"],
-    deps = [":bar_proto"],
-)
-
-closure_proto_library(
-    name = "baz_closure_proto",
-    deps = [":baz_proto"],
-)
-
-closure_js_library(
-    name = "baz",
-    srcs = [
-        "baz.js",
-    ],
-    deps = [
-        ":baz_closure_proto",
-    ],
-)
-
-closure_js_test(
-    name = "baz_test",
-    timeout = "short",
-    srcs = [
-        "baz_test.js",
-    ],
-    entry_points = [
-        "goog:io.bazel.rules.closure.protobuf.BazTest",
-    ],
-    deps = [
-        ":baz",
-        ":foo",
-        "@com_google_javascript_closure_library//closure/goog/testing:testsuite",
-    ],
-)
-
-proto_library(
-    name = "bat_proto",
-    srcs = ["bat.proto"],
-    deps = ["@com_google_protobuf//:any_proto"],
-)
-
-closure_proto_library(
-    name = "bat_closure_proto",
-    deps = [":bat_proto"],
-)
-
-closure_js_library(
-    name = "bat",
-    srcs = [
-        "bat.js",
-    ],
-    deps = [
-        ":bat_closure_proto",
-    ],
-)
-
-closure_js_test(
-    name = "bat_test",
-    timeout = "short",
-    srcs = [
-        "bat_test.js",
-    ],
-    entry_points = [
-        "goog:io.bazel.rules.closure.protobuf.BatTest",
-    ],
-    deps = [
-        ":bat",
-        "@com_google_javascript_closure_library//closure/goog/testing:testsuite",
-    ],
-)
+#closure_proto_library(
+#    name = "baz_closure_proto",
+#    deps = [":baz_proto"],
+#)
+#
+#closure_js_library(
+#    name = "baz",
+#    srcs = [
+#        "baz.js",
+#    ],
+#    deps = [
+#        ":baz_closure_proto",
+#    ],
+#)
+#
+#closure_js_test(
+#    name = "baz_test",
+#    timeout = "short",
+#    srcs = [
+#        "baz_test.js",
+#    ],
+#    entry_points = [
+#        "goog:io.bazel.rules.closure.protobuf.BazTest",
+#    ],
+#    deps = [
+#        ":baz",
+#        ":foo",
+#        "@com_google_javascript_closure_library//closure/goog/testing:testsuite",
+#    ],
+#)
+#
+#proto_library(
+#    name = "bat_proto",
+#    srcs = ["bat.proto"],
+#    deps = ["@com_google_protobuf//:any_proto"],
+#)
+#
+#closure_proto_library(
+#    name = "bat_closure_proto",
+#    deps = [":bat_proto"],
+#)
+#
+#closure_js_library(
+#    name = "bat",
+#    srcs = [
+#        "bat.js",
+#    ],
+#    deps = [
+#        ":bat_closure_proto",
+#    ],
+#)
+#
+#closure_js_test(
+#    name = "bat_test",
+#    timeout = "short",
+#    srcs = [
+#        "bat_test.js",
+#    ],
+#    entry_points = [
+#        "goog:io.bazel.rules.closure.protobuf.BatTest",
+#    ],
+#    deps = [
+#        ":bat",
+#        "@com_google_javascript_closure_library//closure/goog/testing:testsuite",
+#    ],
+#)

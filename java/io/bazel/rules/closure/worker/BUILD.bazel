@@ -12,27 +12,45 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+load("@rules_java//java:defs.bzl", "java_library", "java_proto_library")
+load("@rules_proto//proto:defs.bzl", "proto_library")
+
 licenses(["notice"])
 
-load("@rules_proto//proto:defs.bzl", "proto_library")
-load("@rules_java//java:defs.bzl", "java_library", "java_proto_library")
+#not sure why this is needed
+java_plugin(
+    name = "auto_value_plugin",
+    processor_class = "com.google.auto.value.processor.AutoValueProcessor",
+    deps = ["@maven//:com_google_auto_value_auto_value"],
+)
+
+java_library(
+    name = "auto_value",
+    exported_plugins = [":auto_value_plugin"],
+    exports = ["@maven//:com_google_auto_value_auto_value"],
+)
 
 java_library(
     name = "worker",
-    srcs = glob(["*.java"]),
-    visibility = ["//:__subpackages__"],
+    srcs = glob(
+        ["*.java"],
+    ),
+    visibility = ["//visibility:public"],
     # Our goal with this depnedency list is to keep it lightweight. It only
     # depends on Guava, Protobuf, and a few tiny annotation runtime libraries.
     #
     # TODO(jart): Investigate removing Dagger dependency and push DI heavy
     #             functionality into sub-package that makes Dagger optional.
     deps = [
+        ":auto_value",
         ":worker_protocol_java_proto",
-        "@com_google_auto_value",
-        "@com_google_code_findbugs_jsr305",
-        "@com_google_dagger",
-        "@com_google_guava",
         "@com_google_protobuf//:protobuf_java",
+        "@maven//:com_google_auto_value_auto_value",
+        "@maven//:com_google_auto_value_auto_value_annotations",
+        "@maven//:com_google_code_findbugs_jsr305",
+        "@maven//:com_google_dagger_dagger",
+        "@maven//:com_google_guava_guava",
+        "@maven//:javax_inject_javax_inject",
     ],
 )
 

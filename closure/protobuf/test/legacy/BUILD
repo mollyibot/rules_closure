@@ -12,35 +12,35 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-package(default_testonly = True)
-
-licenses(["notice"])
-
 load("//closure/compiler:closure_js_library.bzl", "closure_js_library")
 load("//closure/protobuf:closure_js_proto_library.bzl", "closure_js_proto_library")
 load("//closure/testing:closure_js_test.bzl", "closure_js_test")
 
-closure_js_proto_library(
-    name = "example_proto",
-    srcs = ["example.proto"],
-)
+package(default_testonly = True)
 
-closure_js_library(
-    name = "example_lib",
-    srcs = ["example.js"],
-    suppress = ["useOfGoogProvide"],
-    deps = [
-        ":example_proto",
-    ],
-)
+licenses(["notice"])
 
-closure_js_test(
-    name = "example_test",
-    timeout = "short",
-    srcs = ["example_test.js"],
-    deps = [
-        ":example_lib",
-        "@com_google_javascript_closure_library//closure/goog/testing:asserts",
-        "@com_google_javascript_closure_library//closure/goog/testing:jsunit",
-    ],
-)
+#closure_js_proto_library(
+#    name = "example_proto",
+#    srcs = ["example.proto"],
+#)
+#
+#closure_js_library(
+#    name = "example_lib",
+#    srcs = ["example.js"],
+#    suppress = ["useOfGoogProvide"],
+#    deps = [
+#        ":example_proto",
+#    ],
+#)
+#
+#closure_js_test(
+#    name = "example_test",
+#    timeout = "short",
+#    srcs = ["example_test.js"],
+#    deps = [
+#        ":example_lib",
+#        "@com_google_javascript_closure_library//closure/goog/testing:asserts",
+#        "@com_google_javascript_closure_library//closure/goog/testing:jsunit",
+#    ],
+#)

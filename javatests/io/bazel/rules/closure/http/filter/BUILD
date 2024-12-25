@@ -12,9 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-licenses(["notice"])
-
 load("@rules_java//java:defs.bzl", "java_test")
+
+licenses(["notice"])
 
 java_test(
     name = "FilterTestSuite",
@@ -23,8 +23,8 @@ java_test(
     deps = [
         "//java/io/bazel/rules/closure/http",
         "//java/io/bazel/rules/closure/http/filter",
-        "@com_google_guava",
-        "@com_google_truth",
-        "@junit",
+        "@maven//:com_google_guava_guava",
+        "@maven//:com_google_truth_truth",
+        "@maven//:junit_junit",
     ],
 )

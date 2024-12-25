@@ -1,4 +1,4 @@
-# Copyright 2016 The Closure Rules Authors. All rights reserved.
+# Copyright 2017 The Closure Rules Authors. All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,10 +12,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-load("@rules_java//java:defs.bzl", "java_binary", "java_library", "java_proto_library")
-load("@rules_proto//proto:defs.bzl", "proto_library")
+load("@rules_java//java:defs.bzl", "java_library")
 
 licenses(["notice"])
+
+java_plugin(
+    name = "auto_value_plugin",
+    processor_class = "com.google.auto.value.processor.AutoValueProcessor",
+    deps = ["@maven//:com_google_auto_value_auto_value"],
+)
+
+java_library(
+    name = "auto_value",
+    exported_plugins = [":auto_value_plugin"],
+    exports = ["@maven//:com_google_auto_value_auto_value"],
+)
 
 java_library(
     name = "dagger",
@@ -37,38 +48,19 @@ java_plugin(
 )
 
 java_library(
-    name = "server",
+    name = "testing",
+    testonly = 1,
     srcs = glob(["*.java"]),
     visibility = ["//:__subpackages__"],
     deps = [
-        ":build_info_java_proto",
+        ":auto_value",
         ":dagger",
-        "//java/io/bazel/rules/closure:webpath",
-        "//java/io/bazel/rules/closure/http",
-        "//java/io/bazel/rules/closure/http/filter",
-        "//java/io/bazel/rules/closure/webfiles:build_info_java_proto",
-        "@com_google_protobuf//:protobuf_java",
-        "@maven//:com_google_code_findbugs_jsr305",
+        "//java/io/bazel/rules/closure/worker",
+        "@maven//:com_google_auto_value_auto_value",
+        "@maven//:com_google_auto_value_auto_value_annotations",
         "@maven//:com_google_dagger_dagger",
         "@maven//:com_google_guava_guava",
+        "@maven//:com_google_truth_truth",
         "@maven//:javax_inject_javax_inject",
     ],
-)
-
-java_binary(
-    name = "WebfilesServer",
-    main_class = "io.bazel.rules.closure.webfiles.server.WebfilesServer",
-    visibility = ["//visibility:public"],
-    runtime_deps = [":server"],
-)
-
-proto_library(
-    name = "build_info_proto",
-    srcs = ["build_info.proto"],
-)
-
-java_proto_library(
-    name = "build_info_java_proto",
-    visibility = ["//visibility:public"],
-    deps = [":build_info_proto"],
 )

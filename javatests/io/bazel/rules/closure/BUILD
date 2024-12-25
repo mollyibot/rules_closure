@@ -12,9 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-licenses(["notice"])
-
 load("@rules_java//java:defs.bzl", "java_test")
+
+licenses(["notice"])
 
 java_test(
     name = "TarjanTest",
@@ -22,9 +22,9 @@ java_test(
     srcs = ["TarjanTest.java"],
     deps = [
         "//java/io/bazel/rules/closure:tarjan",
-        "@com_google_guava",
-        "@com_google_truth",
-        "@junit",
+        "@maven//:com_google_guava_guava",
+        "@maven//:com_google_truth_truth",
+        "@maven//:junit_junit",
     ],
 )
 
@@ -34,10 +34,10 @@ java_test(
     srcs = ["WebpathTest.java"],
     deps = [
         "//java/io/bazel/rules/closure:webpath",
-        "@com_google_guava",
-        "@com_google_guava_testlib",
-        "@com_google_jimfs",
-        "@com_google_truth",
-        "@junit",
+        "@maven//:com_google_guava_guava",
+        "@maven//:com_google_guava_guava_testlib",
+        "@maven//:com_google_jimfs_jimfs",
+        "@maven//:com_google_truth_truth",
+        "@maven//:junit_junit",
     ],
 )

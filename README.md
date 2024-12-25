@@ -659,7 +659,7 @@ This rule can be referenced as though it were the following:
 
 - **defs:** (List of strings; optional) Specifies additional flags to be passed
   to the Closure Stylesheets compiler. To see what flags are available, run:
-  `bazel run @com_google_closure_stylesheets//:ClosureCommandLineCompiler -- --help`
+  `bazel run @maven//:com_google_closure_stylesheets_closure_stylesheets:ClosureCommandLineCompiler -- --help`
 
 
 ## closure\_js\_proto\_library

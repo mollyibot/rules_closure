@@ -1,4 +1,4 @@
-# Copyright 2017 The Closure Rules Authors. All rights reserved.
+# Copyright 2016 The Closure Rules Authors. All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,17 +12,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-licenses(["notice"])
-
 load("@rules_java//java:defs.bzl", "java_library")
 
+licenses(["notice"])
+
 java_library(
-    name = "compiler",
+    name = "filter",
     srcs = glob(["*.java"]),
-    visibility = ["//:__subpackages__"],
+    visibility = ["//visibility:public"],
     deps = [
-        "@com_google_closure_stylesheets",
-        "@com_google_dagger",
-        "@com_google_guava",
+        "//java/io/bazel/rules/closure/http",
+        "@maven//:com_google_dagger_dagger",
+        "@maven//:com_google_guava_guava",
+        "@maven//:javax_inject_javax_inject",
     ],
 )

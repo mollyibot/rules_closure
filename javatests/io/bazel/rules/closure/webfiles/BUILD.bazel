@@ -12,22 +12,24 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-package(default_visibility = ["//visibility:public"])
+load("@rules_java//java:defs.bzl", "java_test")
 
 licenses(["notice"])
 
-load("@rules_java//java:defs.bzl", "java_library")
-load("@bazel_skylib//:bzl_library.bzl", "bzl_library")
-
-java_library(
-    name = "compiler",
-    exports = ["@com_google_javascript_closure_compiler"],
-)
-
-bzl_library(
-    name = "compiler_bzl",
-    srcs = glob(["*.bzl"]),
+java_test(
+    name = "WebfilesTestSuite",
+    size = "small",
+    srcs = glob(["*.java"]),
     deps = [
-        "//closure/private:defs_bzl",
+        "//java/io/bazel/rules/closure:webpath",
+        "//java/io/bazel/rules/closure/webfiles",
+        "//java/io/bazel/rules/closure/webfiles:build_info_java_proto",
+        "//java/io/bazel/rules/closure/webfiles/compiler",
+        "@maven//:com_google_guava_guava",
+        "@maven//:com_google_guava_guava_testlib",
+        "@maven//:com_google_jimfs_jimfs",
+        "@maven//:com_google_truth_truth",
+        "@maven//:junit_junit",
+        "@maven//:org_mockito_mockito_core",
     ],
 )

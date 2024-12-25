@@ -12,16 +12,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-licenses(["notice"])
-
 load("@rules_java//java:defs.bzl", "java_library")
 
+licenses(["notice"])
+
 java_library(
-    name = "nodes",
-    srcs = ["Html5Printer.java"],
-    visibility = ["//visibility:public"],
+    name = "compiler",
+    srcs = glob(["*.java"]),
+    visibility = ["//:__subpackages__"],
     deps = [
-        "@com_google_guava",
-        "@org_jsoup",
+        "@maven//:com_google_closure_stylesheets_closure_stylesheets",
+        "@maven//:com_google_dagger_dagger",
+        "@maven//:com_google_guava_guava",
+        "@maven//:javax_inject_javax_inject",
     ],
 )

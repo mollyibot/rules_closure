@@ -12,24 +12,33 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+load("//closure/compiler:closure_base_js_library.bzl", "closure_base_js_library")
+load("@bazel_skylib//:bzl_library.bzl", "bzl_library")
+
+package(default_visibility = ["//visibility:public"])
+
 licenses(["notice"])
 
-load("@rules_java//java:defs.bzl", "java_test")
+exports_files(["unusable_type.js"])
 
-java_test(
-    name = "WebfilesTestSuite",
-    size = "small",
-    srcs = glob(["*.java"]),
-    deps = [
-        "//java/io/bazel/rules/closure:webpath",
-        "//java/io/bazel/rules/closure/webfiles",
-        "//java/io/bazel/rules/closure/webfiles:build_info_java_proto",
-        "//java/io/bazel/rules/closure/webfiles/compiler",
-        "@com_google_guava",
-        "@com_google_guava_testlib",
-        "@com_google_jimfs",
-        "@com_google_truth",
-        "@junit",
-        "@org_mockito_core",
+sh_binary(
+    name = "gensrcjar",
+    srcs = ["gensrcjar.sh"],
+)
+
+closure_base_js_library(
+    name = "base_lib",
+    srcs = [
+        "@com_google_javascript_closure_library//closure/goog:base.js",
     ],
+)
+
+bzl_library(
+    name = "defs_bzl",
+    srcs = ["defs.bzl"],
+)
+
+bzl_library(
+    name = "files_equal_test_bzl",
+    srcs = ["files_equal_test.bzl"],
 )

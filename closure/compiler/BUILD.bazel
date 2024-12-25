@@ -12,17 +12,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-licenses(["notice"])
-
+load("@bazel_skylib//:bzl_library.bzl", "bzl_library")
 load("@rules_java//java:defs.bzl", "java_library")
 
+package(default_visibility = ["//visibility:public"])
+
+licenses(["notice"])
+
 java_library(
-    name = "filter",
-    srcs = glob(["*.java"]),
-    visibility = ["//visibility:public"],
+    name = "compiler",
+    exports = ["@maven//:com_google_javascript_closure_compiler"],
+)
+
+bzl_library(
+    name = "compiler_bzl",
+    srcs = glob(["*.bzl"]),
     deps = [
-        "//java/io/bazel/rules/closure/http",
-        "@com_google_dagger",
-        "@com_google_guava",
+        "//closure/private:defs_bzl",
     ],
 )

@@ -37,7 +37,12 @@ bazel_dep(
 ##### Cc dependencies #####
 bazel_dep(
     name = "rules_cc",
-    version = "0.0.16",
+    version = "0.0.17",
+)
+
+bazel_dep(
+    name = "abseil-cpp",
+    version = "20240722.0",
 )
 
 ##### Java dependencies #####

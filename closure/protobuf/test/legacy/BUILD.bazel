@@ -20,27 +20,27 @@ package(default_testonly = True)
 
 licenses(["notice"])
 
-#closure_js_proto_library(
-#    name = "example_proto",
-#    srcs = ["example.proto"],
-#)
-#
-#closure_js_library(
-#    name = "example_lib",
-#    srcs = ["example.js"],
-#    suppress = ["useOfGoogProvide"],
-#    deps = [
-#        ":example_proto",
-#    ],
-#)
-#
-#closure_js_test(
-#    name = "example_test",
-#    timeout = "short",
-#    srcs = ["example_test.js"],
-#    deps = [
-#        ":example_lib",
-#        "@com_google_javascript_closure_library//closure/goog/testing:asserts",
-#        "@com_google_javascript_closure_library//closure/goog/testing:jsunit",
-#    ],
-#)
+closure_js_proto_library(
+    name = "example_proto",
+    srcs = ["example.proto"],
+)
+
+closure_js_library(
+    name = "example_lib",
+    srcs = ["example.js"],
+    suppress = ["useOfGoogProvide"],
+    deps = [
+        ":example_proto",
+    ],
+)
+
+closure_js_test(
+    name = "example_test",
+    timeout = "short",
+    srcs = ["example_test.js"],
+    deps = [
+        ":example_lib",
+        "@com_google_javascript_closure_library//closure/goog/testing:asserts",
+        "@com_google_javascript_closure_library//closure/goog/testing:jsunit",
+    ],
+)

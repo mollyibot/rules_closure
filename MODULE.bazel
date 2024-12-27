@@ -7,11 +7,11 @@ bazel_dep(
     version = "1.0.3",
 )
 
-bazel_dep(
-    name = "protobuf",
-    version = "29.0",
-    repo_name = "com_google_protobuf",
-)
+#bazel_dep(
+#    name = "protobuf",
+#    version = "23.1",
+#    repo_name = "com_google_protobuf",
+#)
 
 bazel_dep(
     name = "platforms",
@@ -31,7 +31,7 @@ bazel_dep(
 
 bazel_dep(
     name = "rules_proto",
-    version = "6.0.2",
+    version = "7.0.2",
 )
 
 ##### Cc dependencies #####
@@ -189,6 +189,15 @@ http_archive(
     sha256 = "6e104e54c283c94ae3d5c6573cf3233ce478e89e0f541a869057521966a35b8f",
     strip_prefix = "rules_webtesting-b6fc79c5a37cd18a5433fd080c9d2cc59548222c",
     urls = ["https://github.com/bazelbuild/rules_webtesting/archive/b6fc79c5a37cd18a5433fd080c9d2cc59548222c.tar.gz"],
+)
+
+http_archive(
+    name = "com_google_protobuf",
+    sha256 = "87407cd28e7a9c95d9f61a098a53cf031109d451a7763e7dd1253abf8b4df422",
+    strip_prefix = "protobuf-3.19.1",
+    urls = [
+        "https://github.com/protocolbuffers/protobuf/archive/v3.19.1.tar.gz",
+    ],
 )
 
 http_archive(

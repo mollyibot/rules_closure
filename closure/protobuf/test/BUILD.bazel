@@ -21,26 +21,26 @@ package(default_testonly = True)
 
 licenses(["notice"])
 
-#proto_library(
-#    name = "foo_proto",
-#    srcs = ["foo.proto"],
-#)
-#
-#closure_proto_library(
-#    name = "foo_closure_proto",
-#    deps = [":foo_proto"],
-#)
-#
-#closure_js_library(
-#    name = "foo",
-#    srcs = [
-#        "foo.js",
-#    ],
-#    deps = [
-#        ":foo_closure_proto",
-#    ],
-#)
-#
+proto_library(
+    name = "foo_proto",
+    srcs = ["foo.proto"],
+)
+
+closure_proto_library(
+    name = "foo_closure_proto",
+    deps = [":foo_proto"],
+)
+
+closure_js_library(
+    name = "foo",
+    srcs = [
+        "foo.js",
+    ],
+    deps = [
+        ":foo_closure_proto",
+    ],
+)
+
 #closure_js_test(
 #    name = "foo_test",
 #    timeout = "short",
@@ -52,37 +52,38 @@ licenses(["notice"])
 #    ],
 #    deps = [
 #        ":foo",
+#        "@com_google_javascript_closure_library//closure/goog/testing:jsunit",
 #        "@com_google_javascript_closure_library//closure/goog/testing:testsuite",
 #    ],
 #)
 
-#proto_library(
-#    name = "bar_proto",
-#    srcs = ["bar.proto"],
-#    deps = [":foo_proto"],
-#)
-#
-#proto_library(
-#    name = "baz_proto",
-#    srcs = ["baz.proto"],
-#    deps = [":bar_proto"],
-#)
+proto_library(
+    name = "bar_proto",
+    srcs = ["bar.proto"],
+    deps = [":foo_proto"],
+)
 
-#closure_proto_library(
-#    name = "baz_closure_proto",
-#    deps = [":baz_proto"],
-#)
-#
-#closure_js_library(
-#    name = "baz",
-#    srcs = [
-#        "baz.js",
-#    ],
-#    deps = [
-#        ":baz_closure_proto",
-#    ],
-#)
-#
+proto_library(
+    name = "baz_proto",
+    srcs = ["baz.proto"],
+    deps = [":bar_proto"],
+)
+
+closure_proto_library(
+    name = "baz_closure_proto",
+    deps = [":baz_proto"],
+)
+
+closure_js_library(
+    name = "baz",
+    srcs = [
+        "baz.js",
+    ],
+    deps = [
+        ":baz_closure_proto",
+    ],
+)
+
 #closure_js_test(
 #    name = "baz_test",
 #    timeout = "short",
@@ -95,31 +96,32 @@ licenses(["notice"])
 #    deps = [
 #        ":baz",
 #        ":foo",
+#        "@com_google_javascript_closure_library//closure/goog/testing:jsunit",
 #        "@com_google_javascript_closure_library//closure/goog/testing:testsuite",
 #    ],
 #)
-#
-#proto_library(
-#    name = "bat_proto",
-#    srcs = ["bat.proto"],
-#    deps = ["@com_google_protobuf//:any_proto"],
-#)
-#
-#closure_proto_library(
-#    name = "bat_closure_proto",
-#    deps = [":bat_proto"],
-#)
-#
-#closure_js_library(
-#    name = "bat",
-#    srcs = [
-#        "bat.js",
-#    ],
-#    deps = [
-#        ":bat_closure_proto",
-#    ],
-#)
-#
+
+proto_library(
+    name = "bat_proto",
+    srcs = ["bat.proto"],
+    deps = ["@com_google_protobuf//:any_proto"],
+)
+
+closure_proto_library(
+    name = "bat_closure_proto",
+    deps = [":bat_proto"],
+)
+
+closure_js_library(
+    name = "bat",
+    srcs = [
+        "bat.js",
+    ],
+    deps = [
+        ":bat_closure_proto",
+    ],
+)
+
 #closure_js_test(
 #    name = "bat_test",
 #    timeout = "short",

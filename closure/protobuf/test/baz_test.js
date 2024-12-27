@@ -18,6 +18,7 @@ goog.setTestOnly('io.bazel.rules.closure.protobuf.BazTest');
 const Baz = goog.require('io.bazel.rules.closure.protobuf.Baz');
 const Foo = goog.require('io.bazel.rules.closure.protobuf.Foo');
 const testSuite = goog.require('goog.testing.testSuite');
+goog.require('goog.testing.jsunit');
 
 
 

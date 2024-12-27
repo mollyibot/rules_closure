@@ -4,7 +4,7 @@ module(
 
 bazel_dep(
     name = "bazel_skylib",
-    version = "1.0.3",
+    version = "1.7.1",
 )
 
 #bazel_dep(
@@ -184,11 +184,17 @@ http_file(
 
 http_archive = use_repo_rule("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
+#TODO(mollyibot): Enable this after rules_webtesting is registered
+#bazel_dep(
+#    name = "rules_webtesting",
+#    version = "0.4.0",
+#    repo_name = "io_bazel_rules_webtesting",
+#)
 http_archive(
     name = "io_bazel_rules_webtesting",
-    sha256 = "6e104e54c283c94ae3d5c6573cf3233ce478e89e0f541a869057521966a35b8f",
-    strip_prefix = "rules_webtesting-b6fc79c5a37cd18a5433fd080c9d2cc59548222c",
-    urls = ["https://github.com/bazelbuild/rules_webtesting/archive/b6fc79c5a37cd18a5433fd080c9d2cc59548222c.tar.gz"],
+    sha256 = "bdffc275556538f88e4e06a8d44d3ae2b781ae472795a2976b07194caba417fb",
+    strip_prefix = "rules_webtesting-77428ec7e39f26e31b438372ab2bc2f90f42fa5d",
+    urls = ["https://github.com/bazelbuild/rules_webtesting/archive/77428ec7e39f26e31b438372ab2bc2f90f42fa5d.tar.gz"],
 )
 
 http_archive(

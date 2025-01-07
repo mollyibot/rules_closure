@@ -19,5 +19,5 @@ goog.require('goog.testing.jsunit');
 function testExample() {
   var msg = new io.bazel.rules.closure.protobuf.Example('value');
   msg.field();
-  assertHTMLEquals('value', msg.field());
+  assertEquals('value', msg.field());
 }

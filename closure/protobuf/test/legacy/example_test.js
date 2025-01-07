@@ -14,10 +14,10 @@
 
 goog.require('goog.testing.asserts');
 goog.require('goog.testing.jsunit');
+goog.require('io.bazel.rules.closure.protobuf.Example');
 
 
 function testExample() {
   var msg = new io.bazel.rules.closure.protobuf.Example('value');
-  msg.field();
   assertEquals('value', msg.field());
 }

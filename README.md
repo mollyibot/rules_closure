@@ -67,16 +67,11 @@ First you must [install Bazel].
 You are not required to install the Closure Tools, PhantomJS, or anything else
 for that matter; they will be fetched automatically by Bazel.
 
-### Overriding Dependency Versions
+You need to add the following to your MODULE.bazel file:
 
-When you call `rules_closure_dependencies()` in your `WORKSPACE` file, it causes a
-few dozen external dependencies to be added to your project, e.g. Guava, Guice,
-JSR305, etc. You might need to customize this behavior.
-
-To override the version of any dependency, modify your `WORKSPACE` file to pass
-`omit_<dependency_name>=True` to `rules_closure_dependencies()`. Next define your
-custom dependency version. A full list of dependencies is available from
-[repositories.bzl]. For example, to override the version of Guava:
+```bzl
+bazel_dep(name = "rules_CLOSURE", version = "0.15.0")
+```
 
 ## Examples
 
@@ -735,5 +730,4 @@ This rule can be referenced as though it were the following:
 [proto_library]: https://docs.bazel.build/versions/master/be/protocol-buffer.html#proto_library
 [protobuf-generator]: https://github.com/google/protobuf/blob/master/src/google/protobuf/compiler/js/js_generator.h
 [protobuf-js]: https://github.com/google/protobuf/tree/master/js
-[repositories.bzl]: https://github.com/bazelbuild/rules_closure/tree/master/closure/repositories.bzl
 [verbose]: https://github.com/google/closure-library/blob/master/closure/goog/html/safehtml.js

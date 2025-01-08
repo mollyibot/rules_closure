@@ -65,6 +65,7 @@ def closure_js_test(
             ep = entry_points.get(sauce[0])
         else:
             ep = entry_points
+
         closure_js_binary(
             name = "%s_bin" % shard,
             deps = [":%s_lib" % shard],

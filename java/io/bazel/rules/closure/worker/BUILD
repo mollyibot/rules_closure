@@ -32,10 +32,8 @@ java_library(
 
 java_library(
     name = "worker",
-    srcs = glob(
-        ["*.java"],
-    ),
-    visibility = ["//visibility:public"],
+    srcs = glob(["*.java"]),
+    visibility = ["//:__subpackages__"],
     # Our goal with this depnedency list is to keep it lightweight. It only
     # depends on Guava, Protobuf, and a few tiny annotation runtime libraries.
     #

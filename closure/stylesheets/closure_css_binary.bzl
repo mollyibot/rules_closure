@@ -109,7 +109,7 @@ closure_css_binary = rule(
         "data": attr.label_list(allow_files = True),
         "_compiler": attr.label(
             default = Label(
-                "@com_google_closure_stylesheets//:ClosureCommandLineCompiler",
+                "//:ClosureCommandLineCompiler",
             ),
             executable = True,
             cfg = "exec",

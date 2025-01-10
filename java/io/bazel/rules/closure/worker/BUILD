@@ -17,7 +17,6 @@ load("@rules_proto//proto:defs.bzl", "proto_library")
 
 licenses(["notice"])
 
-#not sure why this is needed
 java_plugin(
     name = "auto_value_plugin",
     processor_class = "com.google.auto.value.processor.AutoValueProcessor",

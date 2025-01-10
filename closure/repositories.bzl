@@ -27,7 +27,6 @@ def rules_closure_toolchains():
 def rules_closure_dependencies(
         omit_args4j = False,
         omit_bazel_skylib = False,
-        omit_clang = False,
         omit_com_google_auto_common = False,
         omit_com_google_auto_factory = False,
         omit_com_google_auto_value = False,
@@ -44,10 +43,8 @@ def rules_closure_dependencies(
         omit_com_google_guava = False,
         omit_com_google_java_format = False,
         omit_com_google_javascript_closure_compiler = False,
-        omit_com_google_javascript_closure_library = False,
         omit_com_google_jsinterop_annotations = False,
         omit_com_google_protobuf = False,
-        omit_com_google_protobuf_js = False,
         omit_com_squareup_javapoet = False,
         omit_fonts_noto_hinted_deb = False,
         omit_fonts_noto_mono_deb = False,
@@ -71,8 +68,6 @@ def rules_closure_dependencies(
         args4j()
     if not omit_bazel_skylib:
         bazel_skylib()
-    if not omit_clang:
-        clang()
     if not omit_com_google_auto_common:
         com_google_auto_common()
     if not omit_com_google_auto_factory:
@@ -105,14 +100,10 @@ def rules_closure_dependencies(
         com_google_java_format()
     if not omit_com_google_javascript_closure_compiler:
         com_google_javascript_closure_compiler()
-    if not omit_com_google_javascript_closure_library:
-        com_google_javascript_closure_library()
     if not omit_com_google_jsinterop_annotations:
         com_google_jsinterop_annotations()
     if not omit_com_google_protobuf:
         com_google_protobuf()
-    if not omit_com_google_protobuf_js:
-        com_google_protobuf_js()
     if not omit_com_squareup_javapoet:
         com_squareup_javapoet()
     if not omit_fonts_noto_hinted_deb:
@@ -171,19 +162,6 @@ def bazel_skylib():
             "https://mirror.bazel.build/github.com/bazelbuild/bazel-skylib/releases/download/0.8.0/bazel-skylib.0.8.0.tar.gz",
             "https://github.com/bazelbuild/bazel-skylib/releases/download/0.8.0/bazel-skylib.0.8.0.tar.gz",
         ],
-    )
-
-def clang():
-    platform_http_file(
-        name = "clang",
-        amd64_urls = [
-            "https://github.com/llvm/llvm-project/releases/download/llvmorg-10.0.0/clang+llvm-10.0.0-x86_64-linux-gnu-ubuntu-18.04.tar.xz",
-        ],
-        amd64_sha256 = "b25f592a0c00686f03e3b7db68ca6dc87418f681f4ead4df4745a01d9be63843",
-        macos_urls = [
-            "https://github.com/llvm/llvm-project/releases/download/llvmorg-10.0.0/clang+llvm-10.0.0-x86_64-apple-darwin.tar.xz",
-        ],
-        macos_sha256 = "633a833396bf2276094c126b072d52b59aca6249e7ce8eae14c728016edb5e61",
     )
 
 def com_google_auto_common():
@@ -570,15 +548,6 @@ def com_google_javascript_closure_compiler():
         ]),
     )
 
-def com_google_javascript_closure_library():
-    http_archive(
-        name = "com_google_javascript_closure_library",
-        sha256 = "64fc4eac972197af13a827a928fff8a2f4711d9a3411147c115a0fc6c1322f70",
-        strip_prefix = "closure-library-20230802",
-        patch_args = ["-p1"],
-        urls = ["https://github.com/google/closure-library/archive/v20230802.tar.gz"],
-    )
-
 def com_google_jsinterop_annotations():
     java_import_external(
         name = "com_google_jsinterop_annotations",
@@ -596,17 +565,6 @@ def com_google_protobuf():
         name = "com_google_protobuf",
         strip_prefix = "protobuf-3.19.1",
         sha256 = "87407cd28e7a9c95d9f61a098a53cf031109d451a7763e7dd1253abf8b4df422",
-        urls = [
-            "https://github.com/protocolbuffers/protobuf/archive/v3.19.1.tar.gz",
-        ],
-    )
-
-def com_google_protobuf_js():
-    http_archive(
-        name = "com_google_protobuf_js",
-        build_file = "@io_bazel_rules_closure//closure/protobuf:protobuf_js.BUILD",
-        sha256 = "87407cd28e7a9c95d9f61a098a53cf031109d451a7763e7dd1253abf8b4df422",
-        strip_prefix = "protobuf-3.19.1/js",
         urls = [
             "https://github.com/protocolbuffers/protobuf/archive/v3.19.1.tar.gz",
         ],

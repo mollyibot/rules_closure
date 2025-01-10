@@ -180,6 +180,15 @@ http_archive(
 )
 
 http_archive(
+    name = "com_google_protobuf",
+    sha256 = "87407cd28e7a9c95d9f61a098a53cf031109d451a7763e7dd1253abf8b4df422",
+    strip_prefix = "protobuf-3.19.1",
+    urls = [
+        "https://github.com/protocolbuffers/protobuf/archive/v3.19.1.tar.gz",
+    ],
+)
+
+http_archive(
     name = "com_google_protobuf_js",
     build_file = "@io_bazel_rules_closure//closure/protobuf:protobuf_js.BUILD",
     sha256 = "87407cd28e7a9c95d9f61a098a53cf031109d451a7763e7dd1253abf8b4df422",
@@ -190,18 +199,6 @@ http_archive(
 )
 
 platform_http_file = use_repo_rule("//closure/private:platform_http_file.bzl", "platform_http_file")
-
-platform_http_file(
-    name = "clang",
-    amd64_sha256 = "b25f592a0c00686f03e3b7db68ca6dc87418f681f4ead4df4745a01d9be63843",
-    amd64_urls = [
-        "https://github.com/llvm/llvm-project/releases/download/llvmorg-10.0.0/clang+llvm-10.0.0-x86_64-linux-gnu-ubuntu-18.04.tar.xz",
-    ],
-    macos_sha256 = "633a833396bf2276094c126b072d52b59aca6249e7ce8eae14c728016edb5e61",
-    macos_urls = [
-        "https://github.com/llvm/llvm-project/releases/download/llvmorg-10.0.0/clang+llvm-10.0.0-x86_64-apple-darwin.tar.xz",
-    ],
-)
 
 platform_http_file(
     name = "phantomjs",

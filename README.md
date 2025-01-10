@@ -64,10 +64,10 @@ First you must [install Bazel].
 You are not required to install the Closure Tools, PhantomJS, or anything else
 for that matter; they will be fetched automatically by Bazel.
 
-You need to add the following to your MODULE.bazel file:
+Then you add the following to your MODULE.bazel file:
 
 ```bzl
-bazel_dep(name = "rules_CLOSURE", version = "0.15.0")
+bazel_dep(name = "rules_closure", version = "0.15.0")
 ```
 
 ## Examples

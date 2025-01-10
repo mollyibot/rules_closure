@@ -86,6 +86,8 @@ maven.install(
     ],
 )
 
+# Use artifact here because the version number vxxxxx cannot parsed correctly
+# using maven install
 maven.artifact(
     artifact = "closure-compiler",
     group = "com.google.javascript",
@@ -105,7 +107,7 @@ bazel_dep(
     version = "1.0.0",
 )
 
-##### use_repo_rule statements #####
+##### Other dependencies #####
 http_file = use_repo_rule("@bazel_tools//tools/build_defs/repo:http.bzl", "http_file")
 
 http_file(

@@ -109,7 +109,7 @@ closure_css_binary = rule(
         "data": attr.label_list(allow_files = True),
         "_compiler": attr.label(
             default = Label(
-                "//:ClosureCommandLineCompiler",
+                "//closure/stylesheets:ClosureCommandLineCompiler",
             ),
             executable = True,
             cfg = "exec",

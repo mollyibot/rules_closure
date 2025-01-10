@@ -180,15 +180,6 @@ http_archive(
 )
 
 http_archive(
-    name = "com_google_protobuf",
-    sha256 = "87407cd28e7a9c95d9f61a098a53cf031109d451a7763e7dd1253abf8b4df422",
-    strip_prefix = "protobuf-3.19.1",
-    urls = [
-        "https://github.com/protocolbuffers/protobuf/archive/v3.19.1.tar.gz",
-    ],
-)
-
-http_archive(
     name = "com_google_protobuf_js",
     build_file = "@io_bazel_rules_closure//closure/protobuf:protobuf_js.BUILD",
     sha256 = "87407cd28e7a9c95d9f61a098a53cf031109d451a7763e7dd1253abf8b4df422",
@@ -196,14 +187,6 @@ http_archive(
     urls = [
         "https://github.com/protocolbuffers/protobuf/archive/v3.19.1.tar.gz",
     ],
-)
-
-http_archive(
-    name = "com_google_javascript_closure_library",
-    patch_args = ["-p1"],
-    sha256 = "64fc4eac972197af13a827a928fff8a2f4711d9a3411147c115a0fc6c1322f70",
-    strip_prefix = "closure-library-20230802",
-    urls = ["https://github.com/google/closure-library/archive/v20230802.tar.gz"],
 )
 
 platform_http_file = use_repo_rule("//closure/private:platform_http_file.bzl", "platform_http_file")

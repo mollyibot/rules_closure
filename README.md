@@ -601,7 +601,7 @@ This rule can be referenced as though it were the following:
 
 - **defs:** (List of strings; optional) Specifies additional flags to be passed
   to the Closure Stylesheets compiler. To see what flags are available, run:
-  `bazel run //:ClosureCommandLineCompiler -- --help`
+  `bazel run //closure/stylesheets:ClosureCommandLineCompiler -- --help`
 
 
 [Bazel]: http://bazel.build/

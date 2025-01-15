@@ -1,5 +1,6 @@
 module(
     name = "io_bazel_rules_closure",
+    version = "0.15.0",
 )
 
 bazel_dep(

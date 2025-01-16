@@ -23,15 +23,30 @@ bazel_dep(
     version = "7.0.2",
 )
 
-##### Cc dependencies #####
 bazel_dep(
-    name = "rules_cc",
-    version = "0.0.17",
+    name = "protobuf",
+    version = "29.1",
+    repo_name = "com_google_protobuf",
 )
 
+# TODO: Switch to a release version once it's available in BCR.
+# Otherwise, the root module has to declare the same override.
 bazel_dep(
-    name = "abseil-cpp",
-    version = "20240722.0",
+    name = "rules_webtesting",
+    repo_name = "io_bazel_rules_webtesting",
+)
+
+archive_override(
+    module_name = "rules_webtesting",
+    integrity = "sha256-vf/CdVVlOPiOTgao1E064reBrkcnlaKXawcZTKukF/s=",
+    strip_prefix = "rules_webtesting-77428ec7e39f26e31b438372ab2bc2f90f42fa5d",
+    urls = ["https://github.com/bazelbuild/rules_webtesting/archive/77428ec7e39f26e31b438372ab2bc2f90f42fa5d.tar.gz"],
+)
+
+git_override(
+    module_name = "rules_scala",
+    commit = "7fb52c7fc2ef8f7670feb73c0a9869715bdc40b8",
+    remote = "https://github.com/mbland/rules_scala",
 )
 
 ##### Java dependencies #####
@@ -49,29 +64,30 @@ maven = use_extension("@rules_jvm_external//:extensions.bzl", "maven")
 
 maven.install(
     artifacts = [
-        "com.google.jimfs:jimfs:1.1",
-        "junit:junit:4.13.2",
-        "com.google.truth:truth:1.4.0",
         "args4j:args4j:2.33",
         "com.google.auto.value:auto-value:1.10.4",
         "com.google.auto.value:auto-value-annotations:1.10.4",
         "com.google.closure-stylesheets:closure-stylesheets:1.5.0",
         "com.google.code.findbugs:jsr305:3.0.2",
-        "org.jsoup:jsoup:1.16.1",
         "com.google.dagger:dagger:2.43.2",
         "com.google.dagger:dagger-compiler:2.43.2",
         "com.google.dagger:dagger-producers:2.43.2",
+        "com.google.guava:guava-testlib:33.2.1-jre",
         "com.google.guava:guava:33.2.1-jre",
-        "net.java.dev.javacc:javacc:7.0.13",
+        "com.google.jimfs:jimfs:1.1",
+        "com.google.truth:truth:1.4.0",
         "javax.inject:javax.inject:1",
+        "junit:junit:4.13.2",
+        "net.java.dev.javacc:javacc:7.0.13",
+        "org.mockito:mockito-core:5.4.0",
+        "org.jsoup:jsoup:1.16.1",
         "org.seleniumhq.selenium:selenium-remote-driver:4.27.0",
         "org.seleniumhq.selenium:selenium-api:4.27.0",
         "org.seleniumhq.selenium:selenium-support:4.27.0",
     ],
 )
 
-# Use artifact here because the version number vxxxxx cannot parsed correctly
-# using maven install
+# Using maven.artifact here because the version number vxxxxx cannot parsed correctly.
 maven.artifact(
     artifact = "closure-compiler",
     group = "com.google.javascript",
@@ -148,48 +164,6 @@ http_file(
     ],
 )
 
-# TODO: Switch to a release version once it's available in BCR.
-# Otherwise, the root module has to declare the same override.
-bazel_dep(
-    name = "rules_webtesting",
-    version = "0.4.0",
-    repo_name = "io_bazel_rules_webtesting",
-)
-
-archive_override(
-    module_name = "rules_webtesting",
-    integrity = "sha256-vf/CdVVlOPiOTgao1E064reBrkcnlaKXawcZTKukF/s=",
-    strip_prefix = "rules_webtesting-77428ec7e39f26e31b438372ab2bc2f90f42fa5d",
-    urls = ["https://github.com/bazelbuild/rules_webtesting/archive/77428ec7e39f26e31b438372ab2bc2f90f42fa5d.tar.gz"],
-)
-
-git_override(
-    module_name = "rules_scala",
-    commit = "7fb52c7fc2ef8f7670feb73c0a9869715bdc40b8",
-    remote = "https://github.com/mbland/rules_scala",
-)
-
-http_archive = use_repo_rule("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
-
-http_archive(
-    name = "com_google_protobuf",
-    sha256 = "87407cd28e7a9c95d9f61a098a53cf031109d451a7763e7dd1253abf8b4df422",
-    strip_prefix = "protobuf-3.19.1",
-    urls = [
-        "https://github.com/protocolbuffers/protobuf/archive/v3.19.1.tar.gz",
-    ],
-)
-
-http_archive(
-    name = "com_google_protobuf_js",
-    build_file = "@io_bazel_rules_closure//closure/protobuf:protobuf_js.BUILD",
-    sha256 = "87407cd28e7a9c95d9f61a098a53cf031109d451a7763e7dd1253abf8b4df422",
-    strip_prefix = "protobuf-3.19.1/js",
-    urls = [
-        "https://github.com/protocolbuffers/protobuf/archive/v3.19.1.tar.gz",
-    ],
-)
-
 platform_http_file = use_repo_rule("//closure/private:platform_http_file.bzl", "platform_http_file")
 
 platform_http_file(
@@ -203,5 +177,17 @@ platform_http_file(
     macos_urls = [
         "https://mirror.bazel.build/bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-macosx.zip",
         "https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-macosx.zip",
+    ],
+)
+
+http_archive = use_repo_rule("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+
+http_archive(
+    name = "com_google_protobuf_js",
+    build_file = "@io_bazel_rules_closure//closure/protobuf:protobuf_js.BUILD",
+    sha256 = "87407cd28e7a9c95d9f61a098a53cf031109d451a7763e7dd1253abf8b4df422",
+    strip_prefix = "protobuf-3.19.1/js",
+    urls = [
+        "https://github.com/protocolbuffers/protobuf/archive/v3.19.1.tar.gz",
     ],
 )

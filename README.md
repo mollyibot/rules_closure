@@ -61,14 +61,16 @@ notes.
 
 First you must [install Bazel]. 
 
-You are not required to install the Closure Tools, PhantomJS, or anything else
-for that matter; they will be fetched automatically by Bazel.
-
 Then you add the following to your MODULE.bazel file:
 
 ```bzl
 bazel_dep(name = "io_bazel_rules_closure", version = "0.15.0")
 ```
+The root module has to declare the same override for rules_webtesting and 
+rules_scala.
+
+You are not required to install the Closure Tools, PhantomJS, or anything else
+for that matter; they will be fetched automatically by Bazel.
 
 ## Examples
 

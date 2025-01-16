@@ -16,8 +16,8 @@ package(default_testonly = True)
 
 licenses(["notice"])
 
-load("//closure:defs.bzl", "closure_css_binary", "closure_css_library", "closure_js_binary", "closure_js_library")
 load("//closure/private:file_test.bzl", "file_test")
+load("//closure:defs.bzl", "closure_css_binary", "closure_css_library", "closure_js_binary", "closure_js_library")
 
 closure_css_library(
     name = "hello_lib",

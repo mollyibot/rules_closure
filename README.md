@@ -66,8 +66,8 @@ Then you add the following to your MODULE.bazel file:
 ```bzl
 bazel_dep(name = "io_bazel_rules_closure")
 ```
-The root module has to declare the same override for rules_webtesting and 
-rules_scala.
+The root module has to declare the same override for rules_webtesting,
+rules_scala, and google_bazel_common.
 
 You are not required to install the Closure Tools, PhantomJS, or anything else
 for that matter; they will be fetched automatically by Bazel.

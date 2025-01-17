@@ -44,8 +44,8 @@ java_test(
         "//java/io/bazel/rules/closure/http/filter",
         "@google_bazel_common//third_party/java/guava",
         "@google_bazel_common//third_party/java/guava:testlib",
+        "@google_bazel_common//third_party/java/junit",
+        "@google_bazel_common//third_party/java/truth",
         "@maven//:com_google_dagger_dagger_producers",
-        "@maven//:com_google_truth_truth",
-        "@maven//:junit_junit",
     ],
 )

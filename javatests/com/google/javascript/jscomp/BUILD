@@ -22,8 +22,8 @@ java_test(
     srcs = ["DiagnosticsTest.java"],
     deps = [
         "//java/com/google/javascript/jscomp",
-        "@maven//:com_google_truth_truth",
-        "@maven//:junit_junit",
+        "@google_bazel_common//third_party/java/junit",
+        "@google_bazel_common//third_party/java/truth",
     ],
 )
 
@@ -34,7 +34,7 @@ java_test(
     deps = [
         "//java/com/google/javascript/jscomp",
         "@google_bazel_common//third_party/java/guava:testlib",
-        "@maven//:junit_junit",
+        "@google_bazel_common//third_party/java/junit",
     ],
 )
 
@@ -45,6 +45,6 @@ java_test(
     deps = [
         "//java/com/google/javascript/jscomp",
         "@google_bazel_common//third_party/java/guava:testlib",
-        "@maven//:junit_junit",
+        "@google_bazel_common//third_party/java/junit",
     ],
 )

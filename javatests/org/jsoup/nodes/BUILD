@@ -23,8 +23,8 @@ java_test(
     deps = [
         "//java/org/jsoup/nodes",
         "@google_bazel_common//third_party/java/guava",
-        "@maven//:com_google_truth_truth",
-        "@maven//:junit_junit",
+        "@google_bazel_common//third_party/java/junit",
+        "@google_bazel_common//third_party/java/truth",
         "@maven//:org_jsoup_jsoup",
     ],
 )

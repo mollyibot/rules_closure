@@ -480,7 +480,7 @@ def com_google_guava():
         ],
         exports = [
             "@com_google_code_findbugs_jsr305",
-            "@com_google_errorprone_error_prone_annotations",
+            "@google_bazel_common//third_party/java/error_prone:annotations",
         ],
     )
 

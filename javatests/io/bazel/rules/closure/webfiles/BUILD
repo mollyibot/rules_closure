@@ -27,9 +27,9 @@ java_test(
         "//java/io/bazel/rules/closure/webfiles/compiler",
         "@google_bazel_common//third_party/java/guava",
         "@google_bazel_common//third_party/java/guava:testlib",
+        "@google_bazel_common//third_party/java/guava/mockito",
+        "@google_bazel_common//third_party/java/junit",
+        "@google_bazel_common//third_party/java/truth",
         "@maven//:com_google_jimfs_jimfs",
-        "@maven//:com_google_truth_truth",
-        "@maven//:junit_junit",
-        "@maven//:org_mockito_mockito_core",
     ],
 )

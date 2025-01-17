@@ -24,7 +24,7 @@ java_test(
         "//java/io/bazel/rules/closure/http",
         "//java/io/bazel/rules/closure/http/filter",
         "@google_bazel_common//third_party/java/guava",
-        "@maven//:com_google_truth_truth",
-        "@maven//:junit_junit",
+        "@google_bazel_common//third_party/java/junit",
+        "@google_bazel_common//third_party/java/truth",
     ],
 )

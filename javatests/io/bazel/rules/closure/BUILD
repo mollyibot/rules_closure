@@ -23,8 +23,8 @@ java_test(
     deps = [
         "//java/io/bazel/rules/closure:tarjan",
         "@google_bazel_common//third_party/java/guava",
-        "@maven//:com_google_truth_truth",
-        "@maven//:junit_junit",
+        "@google_bazel_common//third_party/java/junit",
+        "@google_bazel_common//third_party/java/truth",
     ],
 )
 
@@ -36,8 +36,8 @@ java_test(
         "//java/io/bazel/rules/closure:webpath",
         "@google_bazel_common//third_party/java/guava",
         "@google_bazel_common//third_party/java/guava:testlib",
+        "@google_bazel_common//third_party/java/junit",
+        "@google_bazel_common//third_party/java/truth",
         "@maven//:com_google_jimfs_jimfs",
-        "@maven//:com_google_truth_truth",
-        "@maven//:junit_junit",
     ],
 )

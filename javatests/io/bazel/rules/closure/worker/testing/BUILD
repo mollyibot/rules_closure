@@ -43,8 +43,8 @@ java_library(
         "//java/io/bazel/rules/closure/worker",
         "@google_bazel_common//third_party/java/auto:value",
         "@google_bazel_common//third_party/java/guava",
+        "@google_bazel_common//third_party/java/truth",
         "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_truth_truth",
         "@maven//:javax_inject_javax_inject",
     ],
 )

@@ -31,7 +31,7 @@ java_library(
         "@com_google_protobuf//:protobuf_java",
         "@google_bazel_common//third_party/java/auto:value",
         "@google_bazel_common//third_party/java/guava",
-        "@maven//:com_google_code_findbugs_jsr305",
+        "@google_bazel_common//third_party/java/jsr305_annotations",
         "@maven//:com_google_dagger_dagger",
         "@maven//:javax_inject_javax_inject",
     ],

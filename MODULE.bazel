@@ -74,7 +74,6 @@ maven.install(
     artifacts = [
         "args4j:args4j:2.33",
         "com.google.closure-stylesheets:closure-stylesheets:1.5.0",
-        "com.google.code.findbugs:jsr305:3.0.2",
         "com.google.dagger:dagger:2.43.2",
         "com.google.dagger:dagger-compiler:2.43.2",
         "com.google.dagger:dagger-producers:2.43.2",

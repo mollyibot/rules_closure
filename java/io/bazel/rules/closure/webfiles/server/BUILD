@@ -47,7 +47,7 @@ java_library(
         "//java/io/bazel/rules/closure/webfiles:build_info_java_proto",
         "@com_google_protobuf//:protobuf_java",
         "@google_bazel_common//third_party/java/guava",
-        "@maven//:com_google_code_findbugs_jsr305",
+        "@google_bazel_common//third_party/java/jsr305_annotations",
         "@maven//:javax_inject_javax_inject",
     ],
 )

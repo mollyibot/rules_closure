@@ -73,7 +73,7 @@ java_library(
     visibility = ["//visibility:public"],
     deps = [
         "@google_bazel_common//third_party/java/guava",
-        "@maven//:com_google_code_findbugs_jsr305",
+        "@google_bazel_common//third_party/java/jsr305_annotations",
         "@maven//:javax_inject_javax_inject",
     ],
 )

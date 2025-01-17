@@ -81,6 +81,7 @@ maven.install(
         "javax.inject:javax.inject:1",
         "net.java.dev.javacc:javacc:7.0.13",
         "org.jsoup:jsoup:1.16.1",
+        "org.mockito:mockito-core:5.4.0",
         "org.seleniumhq.selenium:selenium-remote-driver:4.27.0",
         "org.seleniumhq.selenium:selenium-api:4.27.0",
         "org.seleniumhq.selenium:selenium-support:4.27.0",

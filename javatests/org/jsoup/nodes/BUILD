@@ -22,7 +22,7 @@ java_test(
     srcs = ["Html5PrinterTest.java"],
     deps = [
         "//java/org/jsoup/nodes",
-        "@maven//:com_google_guava_guava",
+        "@google_bazel_common//third_party/java/guava",
         "@maven//:com_google_truth_truth",
         "@maven//:junit_junit",
         "@maven//:org_jsoup_jsoup",

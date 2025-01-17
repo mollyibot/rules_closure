@@ -29,9 +29,7 @@ java_plugin(
     generates_api = 1,
     processor_class = "dagger.internal.codegen.ComponentProcessor",
     deps = [
-        #        "@maven//:com_google_dagger_dagger",
         "@maven//:com_google_dagger_dagger_compiler",
-        #        "@maven//:com_google_dagger_dagger_producers",
     ],
 )
 
@@ -44,9 +42,9 @@ java_test(
         "//java/io/bazel/rules/closure/worker",
         "//java/io/bazel/rules/closure/worker:worker_protocol_java_proto",
         "@com_google_protobuf//:protobuf_java",
+        "@google_bazel_common//third_party/java/guava",
         "@maven//:com_google_code_findbugs_jsr305",
         "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_guava_guava",
         "@maven//:com_google_jimfs_jimfs",
         "@maven//:com_google_truth_truth",
         "@maven//:junit_junit",

@@ -21,7 +21,7 @@ java_library(
     srcs = ["Html5Printer.java"],
     visibility = ["//visibility:public"],
     deps = [
-        "@maven//:com_google_guava_guava",
+        "@google_bazel_common//third_party/java/guava",
         "@maven//:org_jsoup_jsoup",
     ],
 )

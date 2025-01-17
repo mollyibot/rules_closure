@@ -23,7 +23,7 @@ java_test(
     deps = [
         "//java/io/bazel/rules/closure/http",
         "//java/io/bazel/rules/closure/http/filter",
-        "@maven//:com_google_guava_guava",
+        "@google_bazel_common//third_party/java/guava",
         "@maven//:com_google_truth_truth",
         "@maven//:junit_junit",
     ],

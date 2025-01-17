@@ -33,7 +33,7 @@ java_test(
     srcs = ["JsCheckerTest.java"],
     deps = [
         "//java/com/google/javascript/jscomp",
-        "@maven//:com_google_guava_guava_testlib",
+        "@google_bazel_common//third_party/java/guava:testlib",
         "@maven//:junit_junit",
     ],
 )
@@ -44,7 +44,7 @@ java_test(
     srcs = ["JsCompilerTest.java"],
     deps = [
         "//java/com/google/javascript/jscomp",
-        "@maven//:com_google_guava_guava_testlib",
+        "@google_bazel_common//third_party/java/guava:testlib",
         "@maven//:junit_junit",
     ],
 )

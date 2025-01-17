@@ -22,7 +22,7 @@ java_test(
     srcs = ["TarjanTest.java"],
     deps = [
         "//java/io/bazel/rules/closure:tarjan",
-        "@maven//:com_google_guava_guava",
+        "@google_bazel_common//third_party/java/guava",
         "@maven//:com_google_truth_truth",
         "@maven//:junit_junit",
     ],
@@ -34,8 +34,8 @@ java_test(
     srcs = ["WebpathTest.java"],
     deps = [
         "//java/io/bazel/rules/closure:webpath",
-        "@maven//:com_google_guava_guava",
-        "@maven//:com_google_guava_guava_testlib",
+        "@google_bazel_common//third_party/java/guava",
+        "@google_bazel_common//third_party/java/guava:testlib",
         "@maven//:com_google_jimfs_jimfs",
         "@maven//:com_google_truth_truth",
         "@maven//:junit_junit",

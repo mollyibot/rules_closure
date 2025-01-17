@@ -29,6 +29,14 @@ bazel_dep(
     repo_name = "com_google_protobuf",
 )
 
+bazel_dep(name = "google_bazel_common")
+
+git_override(
+    module_name = "google_bazel_common",
+    commit = "a7761f9d45b65283274d8d86abb3b87e9fc87258",
+    remote = "https://github.com/google/bazel-common",
+)
+
 # TODO: Switch to a release version once it's available in BCR.
 # Otherwise, the root module has to declare the same override.
 bazel_dep(
@@ -65,15 +73,12 @@ maven = use_extension("@rules_jvm_external//:extensions.bzl", "maven")
 maven.install(
     artifacts = [
         "args4j:args4j:2.33",
-        "com.google.auto.value:auto-value:1.10.4",
-        "com.google.auto.value:auto-value-annotations:1.10.4",
         "com.google.closure-stylesheets:closure-stylesheets:1.5.0",
         "com.google.code.findbugs:jsr305:3.0.2",
         "com.google.dagger:dagger:2.43.2",
         "com.google.dagger:dagger-compiler:2.43.2",
         "com.google.dagger:dagger-producers:2.43.2",
-        "com.google.guava:guava-testlib:33.2.1-jre",
-        "com.google.guava:guava:33.2.1-jre",
+        "com.google.errorprone:error_prone_annotation:2.36.0",
         "com.google.jimfs:jimfs:1.1",
         "com.google.truth:truth:1.4.0",
         "javax.inject:javax.inject:1",

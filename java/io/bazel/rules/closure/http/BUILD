@@ -22,9 +22,9 @@ java_library(
     javacopts = ["-Xep:FallThrough:OFF"],
     visibility = ["//visibility:public"],
     deps = [
+        "@google_bazel_common//third_party/java/guava",
         "@maven//:com_google_code_findbugs_jsr305",
         "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_guava_guava",
         "@maven//:javax_inject_javax_inject",
     ],
 )

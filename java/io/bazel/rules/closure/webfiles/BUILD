@@ -17,18 +17,6 @@ load("@rules_proto//proto:defs.bzl", "proto_library")
 
 licenses(["notice"])
 
-java_plugin(
-    name = "auto_value_plugin",
-    processor_class = "com.google.auto.value.processor.AutoValueProcessor",
-    deps = ["@maven//:com_google_auto_value_auto_value"],
-)
-
-java_library(
-    name = "auto_value",
-    exported_plugins = [":auto_value_plugin"],
-    exports = ["@maven//:com_google_auto_value_auto_value"],
-)
-
 java_library(
     name = "webfiles",
     srcs = glob(
@@ -36,18 +24,17 @@ java_library(
     ),
     visibility = ["//visibility:public"],
     deps = [
-        ":auto_value",
         ":build_info_java_proto",
         "//java/io/bazel/rules/closure:tarjan",
         "//java/io/bazel/rules/closure:webpath",
         "//java/io/bazel/rules/closure/webfiles/compiler",
         "//java/io/bazel/rules/closure/worker",
         "@com_google_protobuf//:protobuf_java",
-        "@maven//:com_google_auto_value_auto_value",
-        "@maven//:com_google_auto_value_auto_value_annotations",
+        "@google_bazel_common//third_party/java/auto:value",
         "@maven//:com_google_closure_stylesheets_closure_stylesheets",
         "@maven//:com_google_code_findbugs_jsr305",
         "@maven//:com_google_dagger_dagger",
+        "@maven//:com_google_errorprone_error_prone_annotations",
         "@maven//:com_google_guava_guava",
         "@maven//:javax_inject_javax_inject",
         "@maven//:org_jsoup_jsoup",

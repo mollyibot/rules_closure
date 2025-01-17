@@ -30,9 +30,7 @@ java_plugin(
     generates_api = 1,
     processor_class = "dagger.internal.codegen.ComponentProcessor",
     deps = [
-        "@maven//:com_google_dagger_dagger",
         "@maven//:com_google_dagger_dagger_compiler",
-        "@maven//:com_google_dagger_dagger_producers",
     ],
 )
 
@@ -51,24 +49,9 @@ java_binary(
         "//java/io/bazel/rules/closure/webfiles",
         "//java/io/bazel/rules/closure/webfiles/compiler",
         "//java/io/bazel/rules/closure/worker",
-        "@maven//:com_google_dagger_dagger",
-        "@maven//:com_google_dagger_dagger_compiler",
-        "@maven//:com_google_dagger_dagger_producers",
-        "@maven//:com_google_guava_guava",
+        "@google_bazel_common//third_party/java/guava",
         "@maven//:javax_inject_javax_inject",
     ],
-)
-
-java_plugin(
-    name = "auto_value_plugin",
-    processor_class = "com.google.auto.value.processor.AutoValueProcessor",
-    deps = ["@maven//:com_google_auto_value_auto_value"],
-)
-
-java_library(
-    name = "auto_value",
-    exported_plugins = [":auto_value_plugin"],
-    exports = ["@maven//:com_google_auto_value_auto_value"],
 )
 
 java_library(
@@ -76,9 +59,7 @@ java_library(
     srcs = ["Tarjan.java"],
     visibility = ["//visibility:public"],
     deps = [
-        ":auto_value",
-        "@maven//:com_google_auto_value_auto_value",
-        "@maven//:com_google_auto_value_auto_value_annotations",
+        "@google_bazel_common//third_party/java/auto:value",
         "@maven//:com_google_guava_guava",
     ],
 )

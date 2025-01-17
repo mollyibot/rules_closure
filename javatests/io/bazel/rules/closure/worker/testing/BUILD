@@ -16,18 +16,6 @@ load("@rules_java//java:defs.bzl", "java_library")
 
 licenses(["notice"])
 
-java_plugin(
-    name = "auto_value_plugin",
-    processor_class = "com.google.auto.value.processor.AutoValueProcessor",
-    deps = ["@maven//:com_google_auto_value_auto_value"],
-)
-
-java_library(
-    name = "auto_value",
-    exported_plugins = [":auto_value_plugin"],
-    exports = ["@maven//:com_google_auto_value_auto_value"],
-)
-
 java_library(
     name = "dagger",
     exported_plugins = [":dagger_plugin"],
@@ -41,9 +29,9 @@ java_plugin(
     generates_api = 1,
     processor_class = "dagger.internal.codegen.ComponentProcessor",
     deps = [
-        "@maven//:com_google_dagger_dagger",
+        #        "@maven//:com_google_dagger_dagger",
         "@maven//:com_google_dagger_dagger_compiler",
-        "@maven//:com_google_dagger_dagger_producers",
+        #        "@maven//:com_google_dagger_dagger_producers",
     ],
 )
 
@@ -53,11 +41,9 @@ java_library(
     srcs = glob(["*.java"]),
     visibility = ["//:__subpackages__"],
     deps = [
-        ":auto_value",
         ":dagger",
         "//java/io/bazel/rules/closure/worker",
-        "@maven//:com_google_auto_value_auto_value",
-        "@maven//:com_google_auto_value_auto_value_annotations",
+        "@google_bazel_common//third_party/java/auto:value",
         "@maven//:com_google_dagger_dagger",
         "@maven//:com_google_guava_guava",
         "@maven//:com_google_truth_truth",

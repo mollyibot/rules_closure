@@ -17,34 +17,16 @@ load("@rules_java//java:defs.bzl", "java_library")
 licenses(["notice"])
 
 java_library(
-    name = "dagger",
-    exported_plugins = [":dagger_plugin"],
-    exports = [
-        "@maven//:com_google_dagger_dagger",
-    ],
-)
-
-java_plugin(
-    name = "dagger_plugin",
-    generates_api = 1,
-    processor_class = "dagger.internal.codegen.ComponentProcessor",
-    deps = [
-        "@maven//:com_google_dagger_dagger_compiler",
-    ],
-)
-
-java_library(
     name = "testing",
     testonly = 1,
     srcs = glob(["*.java"]),
     visibility = ["//:__subpackages__"],
     deps = [
-        ":dagger",
         "//java/io/bazel/rules/closure/worker",
         "@google_bazel_common//third_party/java/auto:value",
+        "@google_bazel_common//third_party/java/dagger",
         "@google_bazel_common//third_party/java/guava",
+        "@google_bazel_common//third_party/java/jsr330_inject",
         "@google_bazel_common//third_party/java/truth",
-        "@maven//:com_google_dagger_dagger",
-        "@maven//:javax_inject_javax_inject",
     ],
 )

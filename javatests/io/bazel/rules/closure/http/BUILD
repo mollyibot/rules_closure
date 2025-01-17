@@ -16,32 +16,15 @@ load("@rules_java//java:defs.bzl", "java_test")
 
 licenses(["notice"])
 
-java_library(
-    name = "dagger",
-    exported_plugins = [":dagger_plugin"],
-    exports = [
-        "@maven//:com_google_dagger_dagger",
-    ],
-)
-
-java_plugin(
-    name = "dagger_plugin",
-    generates_api = 1,
-    processor_class = "dagger.internal.codegen.ComponentProcessor",
-    deps = [
-        "@maven//:com_google_dagger_dagger_compiler",
-    ],
-)
-
 java_test(
     name = "HttpTestSuite",
     size = "small",
     srcs = glob(["*.java"]),
     javacopts = ["-Xep:FutureReturnValueIgnored:OFF"],
     deps = [
-        ":dagger",
         "//java/io/bazel/rules/closure/http",
         "//java/io/bazel/rules/closure/http/filter",
+        "@google_bazel_common//third_party/java/dagger",
         "@google_bazel_common//third_party/java/guava",
         "@google_bazel_common//third_party/java/guava:testlib",
         "@google_bazel_common//third_party/java/junit",

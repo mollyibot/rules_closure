@@ -33,7 +33,7 @@ bazel_dep(name = "google_bazel_common")
 
 git_override(
     module_name = "google_bazel_common",
-    commit = "a7761f9d45b65283274d8d86abb3b87e9fc87258",
+    commit = "34102e4cf748e2922697f28f629ecea687345254",
     remote = "https://github.com/google/bazel-common",
 )
 
@@ -74,14 +74,10 @@ maven.install(
     artifacts = [
         "args4j:args4j:2.33",
         "com.google.closure-stylesheets:closure-stylesheets:1.5.0",
-        "com.google.dagger:dagger:2.43.2",
-        "com.google.dagger:dagger-compiler:2.43.2",
         "com.google.dagger:dagger-producers:2.43.2",
         "com.google.jimfs:jimfs:1.1",
-        "javax.inject:javax.inject:1",
         "net.java.dev.javacc:javacc:7.0.13",
         "org.jsoup:jsoup:1.16.1",
-        "org.mockito:mockito-core:5.4.0",
         "org.seleniumhq.selenium:selenium-remote-driver:4.27.0",
         "org.seleniumhq.selenium:selenium-api:4.27.0",
         "org.seleniumhq.selenium:selenium-support:4.27.0",

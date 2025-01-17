@@ -22,8 +22,8 @@ java_library(
     visibility = ["//visibility:public"],
     deps = [
         "//java/io/bazel/rules/closure/http",
+        "@google_bazel_common//third_party/java/dagger",
         "@google_bazel_common//third_party/java/guava",
-        "@maven//:com_google_dagger_dagger",
-        "@maven//:javax_inject_javax_inject",
+        "@google_bazel_common//third_party/java/jsr330_inject",
     ],
 )

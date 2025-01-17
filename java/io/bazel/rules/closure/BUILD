@@ -17,23 +17,6 @@ load("@rules_proto//proto:defs.bzl", "proto_library")
 
 licenses(["notice"])
 
-java_library(
-    name = "dagger",
-    exported_plugins = [":dagger_plugin"],
-    exports = [
-        "@maven//:com_google_dagger_dagger",
-    ],
-)
-
-java_plugin(
-    name = "dagger_plugin",
-    generates_api = 1,
-    processor_class = "dagger.internal.codegen.ComponentProcessor",
-    deps = [
-        "@maven//:com_google_dagger_dagger_compiler",
-    ],
-)
-
 java_binary(
     name = "ClosureWorker",
     srcs = ["ClosureWorker.java"],
@@ -44,13 +27,13 @@ java_binary(
     main_class = "io.bazel.rules.closure.ClosureWorker",
     visibility = ["//visibility:public"],
     deps = [
-        ":dagger",
         "//java/com/google/javascript/jscomp",
         "//java/io/bazel/rules/closure/webfiles",
         "//java/io/bazel/rules/closure/webfiles/compiler",
         "//java/io/bazel/rules/closure/worker",
+        "@google_bazel_common//third_party/java/dagger",
         "@google_bazel_common//third_party/java/guava",
-        "@maven//:javax_inject_javax_inject",
+        "@google_bazel_common//third_party/java/jsr330_inject",
     ],
 )
 
@@ -74,7 +57,7 @@ java_library(
     deps = [
         "@google_bazel_common//third_party/java/guava",
         "@google_bazel_common//third_party/java/jsr305_annotations",
-        "@maven//:javax_inject_javax_inject",
+        "@google_bazel_common//third_party/java/jsr330_inject",
     ],
 )
 

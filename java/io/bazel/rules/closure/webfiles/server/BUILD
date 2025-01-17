@@ -18,37 +18,20 @@ load("@rules_proto//proto:defs.bzl", "proto_library")
 licenses(["notice"])
 
 java_library(
-    name = "dagger",
-    exported_plugins = [":dagger_plugin"],
-    exports = [
-        "@maven//:com_google_dagger_dagger",
-    ],
-)
-
-java_plugin(
-    name = "dagger_plugin",
-    generates_api = 1,
-    processor_class = "dagger.internal.codegen.ComponentProcessor",
-    deps = [
-        "@maven//:com_google_dagger_dagger_compiler",
-    ],
-)
-
-java_library(
     name = "server",
     srcs = glob(["*.java"]),
     visibility = ["//:__subpackages__"],
     deps = [
         ":build_info_java_proto",
-        ":dagger",
         "//java/io/bazel/rules/closure:webpath",
         "//java/io/bazel/rules/closure/http",
         "//java/io/bazel/rules/closure/http/filter",
         "//java/io/bazel/rules/closure/webfiles:build_info_java_proto",
         "@com_google_protobuf//:protobuf_java",
+        "@google_bazel_common//third_party/java/dagger",
         "@google_bazel_common//third_party/java/guava",
         "@google_bazel_common//third_party/java/jsr305_annotations",
-        "@maven//:javax_inject_javax_inject",
+        "@google_bazel_common//third_party/java/jsr330_inject",
     ],
 )
 

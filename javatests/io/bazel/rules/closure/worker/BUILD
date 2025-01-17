@@ -16,38 +16,20 @@ load("@rules_java//java:defs.bzl", "java_test")
 
 licenses(["notice"])
 
-java_library(
-    name = "dagger",
-    exported_plugins = [":dagger_plugin"],
-    exports = [
-        "@maven//:com_google_dagger_dagger",
-    ],
-)
-
-java_plugin(
-    name = "dagger_plugin",
-    generates_api = 1,
-    processor_class = "dagger.internal.codegen.ComponentProcessor",
-    deps = [
-        "@maven//:com_google_dagger_dagger_compiler",
-    ],
-)
-
 java_test(
     name = "WorkerTestSuite",
     size = "small",
     srcs = glob(["*.java"]),
     deps = [
-        ":dagger",
         "//java/io/bazel/rules/closure/worker",
         "//java/io/bazel/rules/closure/worker:worker_protocol_java_proto",
         "@com_google_protobuf//:protobuf_java",
+        "@google_bazel_common//third_party/java/dagger",
         "@google_bazel_common//third_party/java/guava",
         "@google_bazel_common//third_party/java/jsr305_annotations",
         "@google_bazel_common//third_party/java/junit",
+        "@google_bazel_common//third_party/java/mockito",
         "@google_bazel_common//third_party/java/truth",
-        "@maven//:com_google_dagger_dagger",
         "@maven//:com_google_jimfs_jimfs",
-        "@maven//:org_mockito_mockito_core",
     ],
 )

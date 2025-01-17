@@ -44,9 +44,9 @@ java_library(
         "//java/io/bazel/rules/closure:webpath",
         "//java/io/bazel/rules/closure/worker",
         "@com_google_protobuf//:protobuf_java",
+        "@google_bazel_common//third_party/java/dagger",
         "@google_bazel_common//third_party/java/guava",
+        "@google_bazel_common//third_party/java/jsr330_inject",
         "@maven//:args4j_args4j",
-        "@maven//:com_google_dagger_dagger",
-        "@maven//:javax_inject_javax_inject",
     ],
 )

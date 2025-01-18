@@ -16,11 +16,24 @@ load("@rules_java//java:defs.bzl", "java_test")
 
 licenses(["notice"])
 
+java_library(
+    name = "mockito",
+    testonly = True,
+    exports = ["@google_bazel_common//third_party/java/mockito"],
+    runtime_deps = [
+        "@google_bazel_common//third_party/java/byte_buddy",
+        "@google_bazel_common//third_party/java/byte_buddy_agent",
+        "@google_bazel_common//third_party/java/hamcrest",
+        "@google_bazel_common//third_party/java/objenesis",
+    ],
+)
+
 java_test(
     name = "WebfilesTestSuite",
     size = "small",
     srcs = glob(["*.java"]),
     deps = [
+        ":mockito",
         "//java/io/bazel/rules/closure:webpath",
         "//java/io/bazel/rules/closure/webfiles",
         "//java/io/bazel/rules/closure/webfiles:build_info_java_proto",
@@ -28,7 +41,6 @@ java_test(
         "@google_bazel_common//third_party/java/guava",
         "@google_bazel_common//third_party/java/guava:testlib",
         "@google_bazel_common//third_party/java/junit",
-        "@google_bazel_common//third_party/java/mockito",
         "@google_bazel_common//third_party/java/truth",
         "@maven//:com_google_jimfs_jimfs",
     ],

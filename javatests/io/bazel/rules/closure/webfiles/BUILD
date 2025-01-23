@@ -16,6 +16,9 @@ load("@rules_java//java:defs.bzl", "java_test")
 
 licenses(["notice"])
 
+# This is to work around error
+# https://stackoverflow.com/questions/67782975/how-to-fix-the-module-java-base-does-not-opens-java-io-to-unnamed-module
+# Adding add_opens = ["java.base/java.io"] will introduce https://github.com/mockito/mockito/issues/1467
 java_library(
     name = "mockito",
     testonly = True,

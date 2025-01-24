@@ -51,9 +51,9 @@ bazel_dep(
 
 archive_override(
     module_name = "rules_webtesting",
-    integrity = "sha256-vf/CdVVlOPiOTgao1E064reBrkcnlaKXawcZTKukF/s=",
-    strip_prefix = "rules_webtesting-77428ec7e39f26e31b438372ab2bc2f90f42fa5d",
-    urls = ["https://github.com/bazelbuild/rules_webtesting/archive/77428ec7e39f26e31b438372ab2bc2f90f42fa5d.tar.gz"],
+    integrity = "sha256-pDv9+wDxSIjnho5JJ35yAINt4TOHeA9gJwePArZaGkg=",
+    strip_prefix = "rules_webtesting-46b744fa916b5cefce6f0f84252f4ec89128a01b",
+    urls = ["https://github.com/bazelbuild/rules_webtesting/archive/46b744fa916b5cefce6f0f84252f4ec89128a01b.tar.gz"],
 )
 
 git_override(

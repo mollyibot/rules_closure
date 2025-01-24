@@ -29,6 +29,11 @@ bazel_dep(
     repo_name = "com_google_protobuf",
 )
 
+bazel_dep(
+    name = "abseil-cpp",
+    version = "20240722.0",
+)
+
 bazel_dep(name = "google_bazel_common")
 
 git_override(

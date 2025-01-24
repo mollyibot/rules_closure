@@ -53,7 +53,7 @@ archive_override(
 
 git_override(
     module_name = "rules_scala",
-    commit = "7fb52c7fc2ef8f7670feb73c0a9869715bdc40b8",
+    commit = "031fb0d3a63467d87f25397eb8e23faa57d1d3a6",
     remote = "https://github.com/mbland/rules_scala",
 )
 
@@ -91,6 +91,7 @@ maven.artifact(
     version = "v20240317",
 )
 
+# javacc:javacc was not updated since 2008 and relocated to net.java.dev.javacc
 maven.override(
     coordinates = "javacc:javacc",
     target = "@maven//:net_java_dev_javacc_javacc",
@@ -174,17 +175,5 @@ platform_http_file(
     macos_urls = [
         "https://mirror.bazel.build/bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-macosx.zip",
         "https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-macosx.zip",
-    ],
-)
-
-http_archive = use_repo_rule("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
-
-http_archive(
-    name = "com_google_protobuf_js",
-    build_file = "@io_bazel_rules_closure//closure/protobuf:protobuf_js.BUILD",
-    sha256 = "87407cd28e7a9c95d9f61a098a53cf031109d451a7763e7dd1253abf8b4df422",
-    strip_prefix = "protobuf-3.19.1/js",
-    urls = [
-        "https://github.com/protocolbuffers/protobuf/archive/v3.19.1.tar.gz",
     ],
 )

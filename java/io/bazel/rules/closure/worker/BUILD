@@ -25,14 +25,12 @@ java_library(
     # depends on Guava, Protobuf, and a few tiny annotation runtime libraries.
     #
     # TODO(jart): Investigate removing Dagger dependency and push DI heavy
-    #             functionality into sub-package that makes Dagger optional.
+    # functionality into sub-package that makes Dagger optional.
     deps = [
         ":worker_protocol_java_proto",
-        "@com_google_protobuf//:protobuf_java",
         "@google_bazel_common//third_party/java/auto:value",
         "@google_bazel_common//third_party/java/dagger",
         "@google_bazel_common//third_party/java/guava",
-        "@google_bazel_common//third_party/java/jsr305_annotations",
         "@maven//:javax_inject_javax_inject",
     ],
 )

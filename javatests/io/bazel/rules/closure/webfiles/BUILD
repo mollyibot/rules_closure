@@ -35,6 +35,7 @@ java_test(
     name = "WebfilesTestSuite",
     size = "small",
     srcs = glob(["*.java"]),
+    test_class = "io.bazel.rules.closure.webfiles.WebfilesTestSuite",
     deps = [
         ":mockito",
         "//java/io/bazel/rules/closure:webpath",

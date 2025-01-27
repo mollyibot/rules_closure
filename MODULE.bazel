@@ -13,7 +13,7 @@ bazel_dep(
     version = "0.0.5",
 )
 
-# TODO(mollyibot): remove this after switching to new protobuf release.
+# TODO(mollyibot): Remove this after switching to new protobuf release.
 bazel_dep(
     name = "rules_proto",
     version = "7.0.2",

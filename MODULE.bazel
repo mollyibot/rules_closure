@@ -13,7 +13,7 @@ bazel_dep(
     version = "0.0.5",
 )
 
-# TODO(mollyibot): Remove this after switching to new protobuf release.
+# TODO(mollyibot): Remove this in the future.
 bazel_dep(
     name = "rules_proto",
     version = "7.0.2",
@@ -52,8 +52,7 @@ git_override(
     remote = "https://github.com/bazelbuild/rules_webtesting",
 )
 
-# TODO(mollyibot): Switch to a release version once it's available in BCR.
-# Otherwise, the root module has to declare the same override.
+# TODO(mollyibot): Needed by rules_webtesting.
 git_override(
     module_name = "rules_scala",
     commit = "031fb0d3a63467d87f25397eb8e23faa57d1d3a6",

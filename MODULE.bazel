@@ -45,15 +45,19 @@ bazel_dep(
 
 git_override(
     module_name = "rules_webtesting",
-    commit = "7a1c88f61e35ee5ce0892ae24e2aa2a3106cbfed",
+    commit = "9da96ee35b478bff4ab02795551f1a89a693e864",
     remote = "https://github.com/bazelbuild/rules_webtesting",
 )
 
-# TODO(mollyibot): Needed by rules_webtesting.
-git_override(
-    module_name = "rules_scala",
-    commit = "219e63983e8e483e66ebf70372969ba227382001",
-    remote = "https://github.com/mbland/rules_scala",
+bazel_dep(
+    name = "rules_web_testing_java",
+    repo_name = "io_bazel_rules_web_testing_java",
+)
+
+archive_override(
+    module_name = "rules_web_testing_java",
+    strip_prefix = "rules_webtesting-9da96ee35b478bff4ab02795551f1a89a693e864/web_testing_java",
+    urls = ["https://github.com/bazelbuild/rules_webtesting/archive/9da96ee35b478bff4ab02795551f1a89a693e864.tar.gz"],
 )
 
 ##### Java dependencies #####

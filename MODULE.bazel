@@ -51,7 +51,7 @@ git_override(
 
 bazel_dep(
     name = "rules_web_testing_java",
-    repo_name = "io_bazel_rules_web_testing_java",
+    repo_name = "io_bazel_rules_webtesting_java",
 )
 
 archive_override(

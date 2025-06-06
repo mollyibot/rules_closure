@@ -30,12 +30,10 @@ bazel_dep(
     version = "0.0.1",
 )
 
-bazel_dep(name = "rules_webtesting", version = "0.4.0", repo_name = "io_bazel_rules_webtesting")
-
-git_override(
-    module_name = "rules_webtesting",
-    commit = "9da96ee35b478bff4ab02795551f1a89a693e864",
-    remote = "https://github.com/bazelbuild/rules_webtesting",
+bazel_dep(
+    name = "rules_webtesting",
+    version = "0.4.0",
+    repo_name = "io_bazel_rules_webtesting",
 )
 
 bazel_dep(

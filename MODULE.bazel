@@ -40,13 +40,6 @@ bazel_dep(
     version = "0.4.0",
 )
 
-# TODO(mollyibot): Needed by rules_webtesting.
-git_override(
-    module_name = "rules_scala",
-    commit = "219e63983e8e483e66ebf70372969ba227382001",
-    remote = "https://github.com/mbland/rules_scala",
-)
-
 ##### Java dependencies #####
 bazel_dep(
     name = "rules_java",

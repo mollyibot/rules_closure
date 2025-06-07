@@ -42,6 +42,13 @@ bazel_dep(
     repo_name = "io_rules_web_testing_java",
 )
 
+# This is needed for rules_web_testing_java local_path_override
+archive_override(
+    module_name = "rules_webtesting",
+    strip_prefix = "rules_webtesting-master",
+    urls = ["https://github.com/bazelbuild/rules_webtesting/archive/master.zip"],
+)
+
 ##### Java dependencies #####
 bazel_dep(
     name = "rules_java",

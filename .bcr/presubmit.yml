@@ -1,11 +1,10 @@
-bcr_test_module:
-  matrix:
-    platform:
-      - macos
-      - ubuntu2004
-  tasks:
-    run_tests:
-      build_targets:
-      - "..."
-      test_targets:
-      - "..."
+matrix:
+  platform:
+    - macos
+    - ubuntu2004
+tasks:
+  run_tests:
+    build_targets:
+    - "..."
+    test_targets:
+    - "..."gg

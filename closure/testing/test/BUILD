@@ -12,11 +12,47 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+load("@aspect_rules_jasmine//jasmine:defs.bzl", "jasmine_test")
 load("//closure:defs.bzl", "closure_js_library", "closure_js_test")
-
+#load("@npm//:node_modules/@bazel/concatjs/index.bzl", "karma_web_test")
+#load("@aspect_rules_nodejs//:index.bzl", "nodejs_binary")
 package(default_testonly = True)
 
 licenses(["notice"])
+
+#nodejs_binary(
+#    name = "karma",
+#    entry_point = "//:node_modules/karma/bin/karma",
+#    # Point bazel to your node_modules to find the entry point
+#    data = ["//:node_modules"],
+#)
+
+jasmine_test(
+    name = "simple_jasminettest",
+    args = ["simple_jasmine_test.js"],
+    chdir = package_name(),
+    data = [
+        "simple_jasmine_test.js",
+        "package.json",
+    ],
+    node_modules = "//:node_modules",
+)
+
+
+#karma_web_test_suite(
+#    name = "test",
+#    browsers = [
+#        "@io_bazel_rules_webtesting//browsers:chromium-local",
+#        # TODO(gregmagolan): re-enable firefox testing once fixed
+#        # See https://github.com/bazelbuild/rules_typescript/issues/296
+#        # "@io_bazel_rules_webtesting//browsers:firefox-local",
+#    ],
+#    # rules_webtesting has a required_tag "native" for `chromium-local` browser
+#    tags = ["native"],
+#    deps = [
+#        ":test_lib",
+#    ],
+#)
 
 closure_js_library(
     name = "arithmetic_lib",

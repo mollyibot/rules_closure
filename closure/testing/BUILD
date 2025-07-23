@@ -74,4 +74,3 @@ bzl_library(
         "//closure/compiler:compiler_bzl",
     ],
 )
-
